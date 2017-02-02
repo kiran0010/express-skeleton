@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+<style>
+label {
+	color: rgb(143, 49, 49);
+	font-size: 20px;
+	
+	width: 200px;
+}
+</style>
+<!-- <script src="jquery-3.1.1.min.js"></script> -->
+</head>
+<body>
+  <div class="container-fluid" role="main" >
+    <!-- <img src="clg.jpg">  -->
+
+	  <div class="row" style="height: 100px">
+	      <h1 style="text-align: center; color: black"><b>User Signup</b></h1>
+	    </div>
+	    <div class="row">
+	    <!-- left spce -->
+	    <div class="col-sm-1">
+	    	
+	    </div>
+	    <div class="col-sm-10" style="background-color: rgba(51, 116, 183, 0.42);">
+	  <!-- first row -->
+	    <div class="row" style="height: 50px">
+	      <div class="col-sm-6">
+	        <label>First Name <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="text" name="fname" id="fname" style="width: 300px; text-transform:uppercase"></input> 
+	      </div>  
+	      <div class="col-sm-6" >
+	        <label>Last Name <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="text" name="lname" id="lname" style="width: 300px; text-transform:uppercase"></input> 
+	      </div>  		
+	    </div>
+	    <!-- first row end -->
+	    <!-- 2nd row start -->
+	    <div class="row" style="height: 50px">
+	      
+	      <div class="col-sm-6">
+	        <label >Email-Id <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="text" id="email" style="width: 300px"></input> 
+	      </div> 
+	      <div class="col-sm-6" >
+	        <label >Password <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="Password" id="pass" style="width: 300px"></input> 
+	      </div>   		
+	    </div>
+	    <!-- 2nd row end -->
+	    <!-- 3rd row start -->
+	  
+	    <!-- 4th row end -->
+	    </div>
+	    <!-- right space -->
+	    <div class="col-sm-1"></div>
+	    </div>
+	    <center>
+	    <div class="btn-group">
+	    <button class="btn btn-primary " id="button1" type="submit" >Submit</button>
+	    </div>
+	    </center>
+  </div>
+
+<script type="text/javascript">
+			$('#button1').click(function(e){
+  e.preventDefault();
+  var signup = {
+    name : {
+    	first: $('#fname').val(),
+    	last: $('#lname').val(),
+    },
+    email : $('#email').val(),
+    password : $('#pass').val(),
+  };
+ //console.log(student);
+  $.ajax({
+    url : '/signup',
+    type: 'POST',
+    data : signup,
+    success : function(result){       
+      console.log(result);
+    }
+  });   
+});
+
+
+  	</script>  
+
+</body>
+</html>

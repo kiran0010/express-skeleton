@@ -14,6 +14,8 @@ var config = require('./config')[process.env.NODE_ENV || 'development'];
 var routes = require('./routes/web/index');
 // var users = require('./routes/users');
 
+// mongoose.connect('mongodb://localhost/userdata');
+
 var app = express();
 
 // For Prod usage (SECURITY)

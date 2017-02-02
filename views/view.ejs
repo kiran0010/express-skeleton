@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= name%></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= email %></h1>
+    <p>Welcome to <%= name %></p>
+    <button id="b1">log out</button>
+
+    <script type="text/javascript">
+  	$('#b1').click(function(e){
+  e.preventDefault();
+  var data = "i am kiran"
+   $.ajax({
+    url : '/list',
+    type: 'POST',
+    data : data,
+    success : function(result){       
+      // console.log(result.result);
+      // $('#demo').html(result)
+     
+      window.location.href = "/login"
+    }
+  }); 
+ });
+  </script>
+  </body>
+  
+</html>

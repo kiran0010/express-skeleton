@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/pnotify.custom.min.js"></script>
+<link href="/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+
+
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+<style>
+label {
+	color: rgb(143, 49, 49);
+	font-size: 20px;
+	
+	width: 200px;
+}
+</style>
+<!-- <script src="jquery-3.1.1.min.js"></script> -->
+</head>
+<body>
+  <div class="container-fluid" role="main" >
+    <!-- <img src="clg.jpg">  -->
+
+	  <div class="row" style="height: 100px">
+	      <h1 style="text-align: center; color: black"><b>User Login</b></h1>
+	    </div>
+	    <div class="row">
+	    <!-- left spce -->
+	    <div class="col-sm-1">
+	    	
+	    </div>
+	    <div class="col-sm-10" style="background-color: rgba(51, 116, 183, 0.42);">
+	  <!-- first row -->
+	    <!-- first row end -->
+	    <!-- 2nd row start -->
+	    <div class="row" style="height: 50px">
+	      
+	      <div class="col-sm-6">
+	        <label >Email-Id <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="text" id="email" style="width: 300px"></input> 
+	      </div> 
+	      <div class="col-sm-6" >
+	        <label >Password <span class="required">*</span>
+	        </label>
+	        <input class="pull-right form-control" type="Password" id="pass" style="width: 300px"></input> 
+	      </div>   		
+	    </div>
+	    <!-- 2nd row end -->
+	    <!-- 3rd row start -->
+	  
+	    <!-- 4th row end -->
+	    </div>
+	    <!-- right space -->
+	    <div class="col-sm-1"></div>
+	    </div>
+	    <center>
+	    <div class="btn-group">
+	    <button class="btn btn-primary " id="button1" type="submit" >Submit</button>
+	    </div>
+	    </center>
+  </div>
+  <center><h2 id="demo"></h2></center>
+  
+
+<script type="text/javascript">
+			$('#button1').click(function(e){
+  e.preventDefault();
+  var login = {
+    email : $('#email').val(),
+    password : $('#pass').val(),
+  };
+ //console.log(student);
+  $.ajax({
+    url : '/login',
+    type: 'POST',
+    data : login,
+    success : function(result){       
+      // console.log(result.result);
+      // $('#demo').html(result)
+      
+      if(result.err){
+        new PNotify({
+        title: 'Regular Notice',
+        type: 'error',
+        text: 'error login'
+   			 });
+      	$('#demo').html(result.result)
+      } else{
+      window.location.href = "/list"
+    }
+    }
+  });   
+});
+
+
+  	</script>  
+
+</body>
+</html>
